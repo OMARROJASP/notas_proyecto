@@ -13,4 +13,5 @@ public interface UsuarioRepository extends CrudRepository<Usuario,Long> {
     @Query("select u from Nota u where u.usuario.id =?1")
     List<Nota> findNotasByUsuarioId(Long id);
 
+    Optional<Usuario> findByNombre(String nombre);
 }
