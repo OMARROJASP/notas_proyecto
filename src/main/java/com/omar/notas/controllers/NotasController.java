@@ -40,6 +40,7 @@ public class NotasController {
         return ResponseEntity.notFound().build();
     }
 
+/*
     @GetMapping("/usuario/{id}")
     public List<Nota> listaUsuarioNota(@PathVariable Long id){
         Optional<Usuario> usuarioOptional = usuarioService.encontrarUsuario(id);
@@ -51,6 +52,7 @@ public class NotasController {
         }
 
     }
+ */
 
     @PostMapping
     public ResponseEntity<?> guardarNotas(@Valid @RequestBody Nota nota, BindingResult result){

@@ -30,21 +30,14 @@ public class Usuario {
     @JsonIgnore
     private List<Nota> notas;
 
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public List<Nota> getNotas() {
-        return notas;
-    }
-
-    public void setNotas(List<Nota> notas) {
-        this.notas = notas;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role_id"})}
+    )
+    private List<Role> roles;
 
     public Long getId() {
         return id;
@@ -62,11 +55,11 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getContraseña() {
+    public String getContrasena() {
         return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 
@@ -76,5 +69,21 @@ public class Usuario {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public List<Nota> getNotas() {
+        return notas;
+    }
+
+    public void setNotas(List<Nota> notas) {
+        this.notas = notas;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
